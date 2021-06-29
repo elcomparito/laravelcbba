@@ -14,7 +14,7 @@
     </title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}?v72" defer></script>
+    <script src="{{ asset('js/app.js') }}?v7899" defer></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -51,7 +51,8 @@
                 </li>
 
                 <li class="nav-item m-1">
-                    <a class="nav-link" href="/soy-practicante">Soy practicante<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/soy-practicante">Soy practicante<span
+                            class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item m-1">
@@ -59,7 +60,8 @@
                 </li>
 
                 <li class="nav-item m-1">
-                    <a class="nav-link" href="/soy-institucion">Soy institución<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/soy-institucion">Soy institución<span
+                            class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item m-1">
@@ -82,7 +84,7 @@
 
                                 <div class="dropdown-divider"></div>
                                 <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
+                                                                        document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt mr-3"></i>Salir
                                 </a>
 
@@ -102,6 +104,90 @@
             </ul>
         </div>
     </nav>
+
+    {{-- Dashboards navbar --}}
+
+    @if (Route::has('login'))
+        @auth
+            <ul class="nav nav-tabs">
+                @if (auth()->user()->rol_id == 1)
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/cuenta">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/practicante/perfil">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/practicante/postulaciones">Postulaciones</a>
+                    </li>
+
+                @elseif (auth()->user()->rol_id == 2)
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/cuenta">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Postulaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Entrevistas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Supervisores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Estadísticas</a>
+                    </li>
+
+                @elseif (auth()->user()->rol_id == 3)
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/cuenta">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Carreras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Estadísticas</a>
+                    </li>
+
+                @elseif (auth()->user()->rol_id == 4)
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/cuenta">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Postulaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Entrevistas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Supervisores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Estadísticas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Selección</a>
+                    </li>
+
+                @elseif (auth()->user()->rol_id == 5)
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Módulo administrativo</a>
+                    </li>
+
+                @else
+
+                @endif
+            </ul>
+        @else
+
+        @endauth
+    @endif
 
     {{-- Yield --}}
     <div>

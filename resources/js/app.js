@@ -48,6 +48,8 @@ require('datatables.net-select');
 require('datatables.net-select-bs4');
 
 // Components
+Vue.component('user-login-component', require('./components/UserLoginComponent.vue').default);
+
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('user-component', require('./components/UserComponent.vue').default);
 
@@ -61,9 +63,12 @@ Vue.component('oferta-component', require('./components/OfertaComponent.vue').de
 Vue.component('postulacion-component', require('./components/PostulacionComponent.vue').default);
 
 // Web components
-Vue.component('form-practicante-component', require('./components/FormPracticanteComponent.vue').default);
-Vue.component('form-empresa-component', require('./components/FormEmpresaComponent.vue').default);
-Vue.component('oferta-list-component', require('./components/OfertaListComponent.vue').default);
+Vue.component('form-practicante-component', require('./components/WebFormPracticanteComponent.vue').default);
+Vue.component('form-empresa-component', require('./components/WebFormEmpresaComponent.vue').default);
+Vue.component('oferta-list-component', require('./components/WebOfertaListComponent.vue').default);
+
+// Web practicante components
+Vue.component('web-practicante-postulaciones-component', require('./components/WebPracticantePostulacionesComponent.vue').default);
 
 // MomentsJS
 var moment = require('moment');

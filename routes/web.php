@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +41,17 @@ Route::get('/quienes-somos', function () {
     return view('/web/quienes-somos');
 });
 
+Route::get('/practicante/perfil', function () {
+    return view('/web/practicante/perfil');
+});
+
+Route::get('/practicante/postulaciones', function () {
+    return view('/web/practicante/postulaciones');
+});
+
 Auth::routes();
+
+Route::get('/me', [User::class, 'me']);
 
 // Group Route
 Route::group(['middleware' => 'auth'], function () {
